@@ -1,0 +1,25 @@
+@startuml
+
+actor Cliente
+participant "<<Boundary>>\nInterfacciaPrenotazione" as B
+participant "<<Controller>>\nGestorePrenotazione" as C
+participant "<<Entity>>\nStanza" as E
+
+Cliente -> B : inserisciDatiPren(giorno, ora)
+B -> C : registraPrenotazione()
+
+activate C
+C -> C : trovaStanza(idStanza)
+C --> C : stanza 
+C -> E : isDisponibile()
+alt stanza LIBERA
+    C -> E : setStanza("occupata")
+    C -> B : mostraConferma()
+    B --> Cliente : confermata la prenotazione
+else stanza OCCUPATA
+    C -> B : mostraErrore()
+    B --> Cliente : errore: stanza occupata
+end
+deactivate C
+
+@enduml

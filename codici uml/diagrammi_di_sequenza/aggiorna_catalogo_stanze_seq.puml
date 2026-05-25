@@ -1,0 +1,17 @@
+@startuml
+actor Amministratore
+participant "InterfacciaCatalogo" as B <<Boundary>>
+participant "GestoreCatalogo" as C <<Controller>>
+participant "Stanza" as E <<Entity>>
+
+Amministratore -> B : accediGestioneCatalogo()
+B -> C : richiediDatiStanze()
+C -> C : recuperaDatiStanze()
+C --> C : dati stanze
+C --> B : mostra dati stanze
+Amministratore -> B : modificaDatiStanze(nome, tipo, descrizione)
+B -> C : inviaDatiStanze(nome, tipo, descrizione)
+C -> E : setDatiStanze(nome, tipo, descrizione)
+C --> B : conferma modifica catalogo
+B --> Amministratore : modifica effettuata con successo
+@enduml

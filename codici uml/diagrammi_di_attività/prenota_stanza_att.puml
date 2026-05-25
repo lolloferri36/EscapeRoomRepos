@@ -1,0 +1,19 @@
+@startuml
+start
+
+:Inserisici dati prenotazione;
+:Registra prenotazione;
+:Trova stanza;
+
+if (è disponibile?) then (si)
+fork
+    :Occupa la stanza;
+fork again
+     :Prenotazione confermata;
+end fork
+else (no)
+:Mostra errore;
+
+endif
+stop
+@enduml

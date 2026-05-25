@@ -1,0 +1,38 @@
+@startuml
+
+actor Cliente
+participant "<<Boundary>>\nInterfacciaPrenotazione" as B
+participant "<<Controller>>\nGestorePrenotazione" as C
+participant "<<Entity>>\n:StanzaVecchia" as P
+participant "<<Entity>>\n:StanzaNuova" as S
+
+Cliente -> B : scegliPrenotazione(idPrenotazione)
+B -> C : inviaPrenotazione()
+C -> C : verificaTempoMancante()
+
+
+alt Mancano < 24h
+    C -> B : mostraErrore("troppo tardi")
+    B --> Cliente : modifica non eseguibile
+   
+else Mancano >= 24h
+    Cliente -> B : inserisciDatiPren(giorno, ora)
+    B -> C : registraPrenotazione()
+    C -> C : trovaStanza(idStanza)
+    C --> C : stanza
+    C -> S : isDisponibile()
+
+alt Stanza Disponibile
+    C -> S : setStanza("occupata")
+    C -> P : setStanza("liberata")
+    C --> B  
+    B --> Cliente : modifica eseguita con successo
+
+else Stanza Non Disponibile
+    C -> B : mostraErrore(stanza non disponibile)
+    B --> Cliente : modifica non eseguibile
+
+end
+end      
+
+@enduml  

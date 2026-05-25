@@ -1,0 +1,26 @@
+@startuml
+
+actor "Cliente" as U
+participant " InterfacciaPartita" as B <<Boundary>>
+participant " GestorePartita" as C <<Controller>>
+participant "Partita" as E <<Entity>>   
+
+U -> B : terminaPartita()
+B -> C : richiediFine()
+C -> E : getTempoTrascorso()
+E --> C : tempo : int
+C -> C : stopCronometro()
+
+alt tempo > 90
+    C -> E : setEsito("Partita Persa")
+    E --> C : conferma
+    
+    C -> B : mostraRisultato("Partita Persa")
+else tempo <= 90
+    C -> E : setEsito("Partita Vinta")
+
+    E -->> C : conferma
+  
+    C -> B : mostraRisultato("Partita Vinta")
+end
+@enduml

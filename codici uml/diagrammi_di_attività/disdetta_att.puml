@@ -1,0 +1,20 @@
+@startuml
+start
+
+:Scegli prenotazione;
+:Invia prenotazione;
+:Verifica tempo mancante;
+
+if (mancano >= 24h?) then (si)
+  fork
+:Disdetta confermata;
+  fork again
+:Stanza liberata;
+   end fork
+
+else (no)
+:Mostra errore: "termini scaduti";
+
+endif
+stop
+@enduml

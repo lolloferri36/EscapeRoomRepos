@@ -1,0 +1,11 @@
+@startuml
+start 
+
+:Accedi sezione clienti;
+:Richiedi clienti;
+:Recupera dati clienti;
+:Mostra lista dei clienti;
+note right: Clienti si sottointende registrati
+
+stop
+@enduml

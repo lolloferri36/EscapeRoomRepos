@@ -1,0 +1,20 @@
+@startuml
+start
+
+:Inserisci dati;
+:Registra nuovo utente;
+:Verifica email;
+
+if (email disponibile?) then (si)
+fork
+:Mostra conferma;
+fork again
+:Crea nuovo account;
+end fork
+
+else (no)
+:Mostra errore: "e-mail già in uso";
+
+endif
+stop
+@enduml

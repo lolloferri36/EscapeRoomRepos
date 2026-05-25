@@ -1,0 +1,16 @@
+@startuml
+start
+
+:Inserisci credenziali;
+:Richiesta accesso;
+:Verifica credenziali;
+
+if (credenziali corrette?) then (si)
+:Accesso eseguito;
+
+else (no)
+:Mostra errore: "credenziali errate";
+
+endif
+stop
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+start
+
+:Accedi sezione catalogo;
+:Richiedi catalogo;
+:Recupera dati stanze;
+:Mostra catalogo;
+ 
+stop
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+start
+
+:Accedi gestione catalogo;
+:Richiedi dati stanze;
+:Recupera dati stanze;
+:Mostra dati stanze;
+:Modifica dati stanze;
+:Invia dati stanze;
+:Modifica effettuata con successo;
+
+stop
+@enduml

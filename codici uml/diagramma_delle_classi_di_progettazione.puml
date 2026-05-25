@@ -1,0 +1,160 @@
+@startuml
+
+class InterfacciaCatalogo <<boundary>> {
+    - gestore: GestoreCatalogo
+    + accediSezioneCatalogo(): void
+    + mostraCatalogo(): List
+    + aggiornaStanza(nome, tipo, descrizione): void
+    
+}
+
+class GestoreCatalogo <<controller>> {
+    + aggiornaStanza(idStanza: String, tipo: String, descrizione: String, prezzo: Double): str
+    + elencaStanze(): List<Stanza>
+}
+
+class Stanza <<entity>> {
+    - idStanza: String
+    - stato: Boolean
+    - descrizione: String
+    - prezzo: Double
+    - nome: String
+    - tipo: String
+    + isDisponibile(): Boolean
+    + setStato(stato: boolean): void
+    + setDatiStanze(nome : String, tipo : String, descrizione : String): void
+    + getIdStanza(): String
+    + getDescrizione(): String
+    + getPrezzo(): Double
+    + getNome(): String
+    + getTipo(): String
+}
+
+InterfacciaCatalogo --> GestoreCatalogo
+GestoreCatalogo ..> Stanza : <<modifica>>
+
+class InterfacciaPrenotazione <<boundary>> {
+    - gestore: GestorePrenotazione
+    - gestore: GestoreCatalogo
+    + mostraPrenotazioniCliente(idCliente: str): void
+    + mostraTuttePrenotazioni(): void
+    + prenota(idCliente: str): str
+    + disdetta(idcliente: str): void 
+    + accediSezionePrenotazioni(): void
+    + modifica(idCliente: str): void
+    + trovaPerId(idCLiente: str): void
+
+}
+
+class GestorePrenotazione <<controller>> {
+    + prenota(idCLiente: str, idStanza: str, giorno: str, ora: str): str
+    + trovaStanza(idStanza: int): Stanza
+    + disdetta(idCliente: str, idPrenotazione: str): str
+    + modificaPrenotazione(idPrenotazione: str, idCliente: str, nuovo_giorno: str, nuova_ora: str): str
+    + elencaPrenotazioneCliente(idCliente: str): List
+    + elencaTutteLePrenotazioni(): List
+    + avviaPartita(idPrenotazione: str, idCliente: str): str
+    +terminaPartita(): str
+    
+}
+
+class Prenotazione <<entity>> {
+    - idPrenotazione: String
+    - stato: Boolean
+    - ora: String
+    - giorno: String
+    - statoDisdetta: Boolean
+    - idCliente: String
+    -idStanza: String
+    + setStatoDisdetta(stato: boolean): void
+    + setStato(): void
+    + getIdPrenotazione(): String
+    + getOra(): String
+    + getGiorno(): String
+    + getStato(): Boolean
+    + getStatoDisdetta(): Boolean
+    + getIdCliente(): String
+    + getIdStanza(): String
+
+}
+
+InterfacciaPrenotazione --> GestorePrenotazione
+GestorePrenotazione ..> Stanza : <<verifica>>
+GestorePrenotazione ..> Prenotazione : <<gestisce>>
+
+
+class InterfacciaAccount <<boundary>> {
+    - gestore: GestoreAccount
+    + registra(email: String, password: String): void
+    + accediCliente(email: String, password: String): void
+    + accediAmministratore(email: String, password: String): void
+}
+
+class GestoreAccount <<controller>> {
+    + registrazione(email: String, password: String): str
+    + accessoCliente(email: String, password: String): str
+    + accessoAmministratore(email: String, password: String): str
+}
+
+abstract class Utente <<entity>> {
+    - email: String
+    - password: String
+    - statoAccesso: Boolean
+    + setStatoAccesso(eseguito: Boolean): void
+    + getEmail(): String
+    + getPassword(): String
+    + getStatoAccesso(): Boolean
+}
+
+InterfacciaAccount --> GestoreAccount
+GestoreAccount ..> Utente : <<gestisce>>
+
+class InterfacciaCliente <<boundary>> {
+    - gestore: GestoreClienti
+    + mostraClienti(): void
+
+}
+
+class GestoreCliente <<controller>> {
+    + elencaClienti(): List
+}   
+
+class Cliente <<entity>> {
+    - idCliente: String
+    + getIdCliente(): String
+}
+class Partita <<entity>>{
+    -idPartita: String
+    -idCliente: String
+    -idPrenotazione: String
+    -tempoInizio: Time
+    -tempoFine: Time
+    -esito: String
+    +getTempoTrascorso(): Time
+    +getidPartita():String
+    +isAvviata(): Boolean
+    +getEsito(): String
+
+}
+
+class InterfacciaPartita<<boundary>>{
+    -gestore: GestorePrenotazione
+    +avviaPartita(): void
+    +terminaPartita():void
+}
+
+class Amministratore <<entity>> {
+    - idAdmin: String
+    + getIdAdmin(): String
+
+}
+
+InterfacciaPartita-->GestorePrenotazione
+GestorePrenotazione..>Partita: gestisce
+
+InterfacciaCliente --> GestoreCliente
+GestoreCliente ..> Cliente : <<recupera>>
+Cliente --|> Utente
+Amministratore --|> Utente
+
+@enduml

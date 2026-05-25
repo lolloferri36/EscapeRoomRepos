@@ -1,0 +1,17 @@
+@startuml
+
+actor Utente
+participant "Boundary:\nInterfacciaCatalogo" as B
+participant "Controller:\nGestoreCatalogo" as C
+
+Utente -> B : accediSezioneCatalogo()
+B -> C : richiediDatiStanze(nome, descrizione, prezzo)
+
+activate C
+C -> C : recuperaDatiStanze(nome, descrizione, prezzo)
+C --> C : datiStanze
+C -> B : mostraDatiStanze(nome, descrizione, prezzo)
+deactivate C
+
+B --> Utente : visualizza catalogo
+@enduml       

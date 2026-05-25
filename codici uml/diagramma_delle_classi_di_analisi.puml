@@ -1,0 +1,53 @@
+@startuml
+
+class Prenotazione <<entity>> {
+    - idPrenotazione: String
+    - idCliente: String
+    - idStanza: String
+    - statoPrenotazione: Boolean
+    - ora: String
+    - giorno: String
+    - statoDisdetta: Boolean
+}
+
+class Cliente <<entity>> {
+    - idCliente: String
+}
+class Partita <<entity>> {
+    - idPartita: String
+    - idCLiente: String
+    - idPrenotazione: String
+    - tempoInizio: time 
+    - tempoFine: time
+    - esito: String
+}
+
+class Amministratore <<entity>> {
+    - idAdmin: String
+}
+
+class Stanza <<entity>> {
+    - idStanza: String
+    - stato: Boolean
+    - descrizione: String
+    - prezzo: Double
+    - nome: String
+    - tipo: String
+}
+
+abstract class Utente <<entity>> {
+    - email: String
+    - password: String
+    - statoAccesso: Boolean
+}
+
+
+Cliente --|> Utente
+Amministratore --|> Utente
+Cliente "1..*"--|>"1" Stanza : prenota
+Amministratore "1" --|> "0..*"   Stanza : gestisce
+Cliente "1" --|> "0..*" Prenotazione : effettua
+Prenotazione "0..*" -- "1" Stanza : riguarda
+Cliente"1" --|>"1" Partita :esegue
+
+@enduml

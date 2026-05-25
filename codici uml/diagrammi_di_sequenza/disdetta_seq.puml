@@ -1,0 +1,23 @@
+@startuml
+
+actor Cliente
+participant "<<Boundary>>\nInterfacciaPrenotazione" as B
+participant "<<Controller>>\nGestorePrenotazione" as C
+participant "<<Entity>>\nPrenotazione" as P
+participant "<<Entity>>\nStanza" as S
+
+Cliente -> B : scegliPrenotazione(idPrenotazione)
+B -> C : inviaPrenotazione()
+C -> C : verificaTempoMancante()
+
+alt mancano >= 24h
+    C -> P : setDisdetta("confermata")
+    C -> S : setStanza("libera")
+    C -> B : mostraConferma()
+    B --> Cliente : confermata la disdetta
+else mancano < 24h
+    C --> B : mostraErrore: ("termini scaduti")
+    B --> Cliente : errore: termini scaduti
+end
+
+@enduml 
