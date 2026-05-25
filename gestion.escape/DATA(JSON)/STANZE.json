@@ -1,0 +1,54 @@
+[
+  {
+    "idStanza": "01",
+    "descrizione": "Esci dalla scatola nera del terrore prima che sia troppo tardi.",
+    "prezzo": 50.0,
+    "nome": "BlackBox",
+    "tipo": "Horror",
+    "stato": true,
+    "suggerimenti": [
+      "Osserva attentamente le pareti: ogni simbolo ha un significato.",
+      "Il numero che cerchi è nascosto sotto la luce rossa.",
+      "Combina i tre oggetti sul tavolo nell'ordine corretto."
+    ]
+  },
+  {
+    "idStanza": "02",
+    "descrizione": "Esci dalla scatola gialla del mistero prima che sia troppo tardi.",
+    "prezzo": 50.0,
+    "nome": "YellowBox",
+    "tipo": "Giallo",
+    "stato": true,
+    "suggerimenti": [
+      "Ogni indizio lasciato dalla vittima racconta una parte della verità.",
+      "Il movente è nascosto tra le lettere sul scrittoio: leggi tra le righe.",
+      "L'alibi del sospettato crolla se confronti gli orologi nella stanza."
+    ]
+  },
+  {
+    "idStanza": "03",
+    "descrizione": "Esci dalla scatola rossa del sangue prima che sia troppo tardi.",
+    "prezzo": 50.0,
+    "nome": "RedBox",
+    "tipo": "Splatter",
+    "stato": true,
+    "suggerimenti": [
+      "Non tutto il sangue è dove sembra: cerca le tracce nascoste sotto la luce UV.",
+      "Il codice è inciso sull'arma: osserva bene ogni dettaglio.",
+      "L'uscita si apre solo quando i tre reperti vengono messi al loro posto."
+    ]
+  },
+  {
+    "idStanza": "04",
+    "descrizione": "Esci dalla scatola verde della natura prima che sia troppo tardi.",
+    "prezzo": 50.0,
+    "nome": "GreenBox",
+    "tipo": "Biologico",
+    "stato": true,
+    "suggerimenti": [
+      "Le piante nella stanza non sono decorative: ognuna nasconde un elemento del codice.",
+      "Il campione biologico sotto il microscopio rivela la sequenza corretta.",
+      "Combina le tre formule chimiche nell'ordine indicato dal diagramma sul muro."
+    ]
+  }
+]

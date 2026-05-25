@@ -1,0 +1,11 @@
+[
+  {
+    "idPrenotazione": "9c7b47af-d06b-4994-9553-0b1949b57f5d",
+    "idCliente": "846d575b-6c56-4ab3-8c24-b01fb0be5f70",
+    "idStanza": "01",
+    "giorno": "2026-05-22",
+    "ora": "21:00",
+    "statoPrenotazione": true,
+    "statoDisdetta": false
+  }
+]
