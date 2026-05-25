@@ -1,0 +1,22 @@
+@startuml
+
+actor Utente
+participant "<<Boundary>>\nInterfacciaAccount" as B
+participant "<<Controller>>\nGestoreAccount" as C
+participant "<<Entity>>\nUtente" as E
+
+Utente -> B : inserisce credenziali(email, password)
+B -> C : accesso(email, password)
+C -> C : trovaPerEmailEPassword\n(email, password)
+
+alt Utente trovato, Credenziali corrette
+  C->E : setStatoAccesso(eseguito)
+  C-->B
+  B-->Utente : accesso eseguito
+
+else Utente non trovato, Credenziali Errate
+  C->B : mostraErrore()
+  B-->Utente : credenziali errate
+end 
+
+@enduml   
