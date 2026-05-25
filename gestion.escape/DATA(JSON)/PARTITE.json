@@ -1,0 +1,10 @@
+[
+  {
+    "idPartita": "344d01fd-2d7b-4aea-af7c-3adac9a94611",
+    "idCliente": "12e37a87-243a-4686-bedc-b67d731e646d",
+    "idPrenotazione": "25cd621e-57d6-43f0-9fe4-e370b60da116",
+    "esito": "sconfitta",
+    "tempoInizio": "2026-05-25T18:08:23.242858",
+    "tempoFine": "2026-05-25T18:08:31.800150"
+  }
+]
