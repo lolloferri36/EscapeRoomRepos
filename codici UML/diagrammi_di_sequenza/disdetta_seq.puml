@@ -1,0 +1,27 @@
+@startuml
+
+actor Cliente
+participant "<<Boundary>>\nInterfacciaPrenotazione" as B
+participant "<<Controller>>\nGestorePrenotazione" as C
+participant "<<Entity>>\nPrenotazione" as P
+participant "<<Entity>>\nStanza" as S
+
+Cliente -> B : disdetta()
+B -> C : elencaPrenotazioneCliente(idCliente)
+C -> C : trovaPerId(idCliente)
+C --> C : prenotazioni
+C --> B : lista prenotazioni
+Cliente -> B : sceglie prenotazione
+B -> C : disdetta(idCliente, idPrenotazione)
+C -> C : verifica tempo mancante 
+alt mancano >= 24h
+    C -> P : setStatoDisdetta("confermata")
+    C -> S : setStato("libera")
+    C -> B : mostraConferma()
+    B --> Cliente : confermata la disdetta
+else mancano < 24h
+    C --> B : mostraErrore: ("termini scaduti")
+    B --> Cliente : errore: termini scaduti
+end
+
+@enduml 

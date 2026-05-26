@@ -1,0 +1,22 @@
+@startuml
+start
+
+:Accesso sezione catalogo;
+:Elenca stanze;
+:Trova stanze;
+:Inserisce idstanza, nome,\ntipo, descrizione;
+:Aggiorna stanza;
+:Trova per id;
+if (stanza trovata?) then (si)
+fork
+:Aggiorna dati stanze;
+fork again
+:Modifica effettuata con successo;
+end fork
+
+else (no)
+:Errore: "stanza non trovata";
+endif
+
+stop
+@enduml

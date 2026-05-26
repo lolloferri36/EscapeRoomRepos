@@ -1,0 +1,10 @@
+@startuml
+start 
+
+:Avvia partita;
+:<<Create>> partita;
+:Avvia cronometro;
+:Visualizza gioco e timer;
+
+stop
+@enduml

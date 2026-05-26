@@ -1,0 +1,22 @@
+@startuml
+
+actor Cliente
+participant "InterfacciaPartita" as B <<boundary>>
+participant "GestorePartita" as C <<controller>>
+participant "Partita" as E <<entity>>
+
+Cliente -> B : avviaPartita()
+activate B
+
+B -> C : avviaPartita(idPrenotazione, idCliente)
+activate C
+
+C -> E : <<create>> partita()
+C -> C : avviaCronometro()
+C --> B : partita avviata
+deactivate C
+
+B --> Cliente : visualizza gioco e timer
+deactivate B
+
+@enduml

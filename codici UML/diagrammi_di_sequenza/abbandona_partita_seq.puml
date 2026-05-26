@@ -1,0 +1,18 @@
+@startuml
+
+actor Cliente
+participant "<<Boundary>>\nInterfacciaPartita" as B
+participant "<<Controller>>\nGestorePartita" as C
+participant "<<Entity>>\nPartita" as P
+
+Cliente -> B : abbandonaPartita()
+B -> B : richiedi conferma
+B --> Cliente : sei sicuro?
+Cliente -> B : conferma abbandono
+B -> C : abbandona()
+C -> P : getEsito("Sconfitta")
+P --> C : conferma
+C --> B : 
+B --> Cliente : partita abbandonata (sconfitta)
+
+@enduml

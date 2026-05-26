@@ -1,0 +1,20 @@
+@startuml
+start
+:Disdetta;
+:Elenca prenotazione cliente;
+:Trova per id;
+:Verifica tempo mancante;
+if (mancano >= 24h?) then (si)
+fork
+:Aggiorna stato disdetta ("confermata");
+fork again
+:Aggiorna stato stanza ("libera");
+fork again
+:Disdetta confermata;
+end fork
+else (no)
+:Mostra errore: "termini scaduti";
+
+endif
+stop
+@enduml

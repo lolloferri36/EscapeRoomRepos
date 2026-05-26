@@ -1,0 +1,10 @@
+@startuml
+start
+
+:Abbandona partita;
+:Richiedi conferma;
+:Conferma abbandono;
+:Esito partita ("sconfitta");
+
+stop
+@enduml
