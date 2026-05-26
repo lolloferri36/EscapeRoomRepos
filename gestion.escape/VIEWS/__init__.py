@@ -1,0 +1,5 @@
+from .INTERFACCIA_ACCOUNT import InterfacciaAccount
+from .INTERFACCIA_CATALOGO import InterfacciaCatalogo
+from .INTERFACCIA_CLIENTE import InterfacciaCliente
+from .INTERFACCIA_PARTITA import InterfacciaPartita
+from .INTERFACCIA_PRENOTAZIONE import InterfacciaPrenotazione

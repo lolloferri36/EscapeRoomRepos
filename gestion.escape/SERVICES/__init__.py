@@ -1,0 +1,5 @@
+from SERVICES.GESTORE_ACCOUNT import GestoreAccount
+from SERVICES.GESTORE_CATALOGO import GestoreCatalogo
+from SERVICES.GESTORE_CLIENTE import GestoreCliente
+from SERVICES.GESTORE_PRENOTAZIONE import GestorePrenotazione
+from SERVICES.GESTORE_PARTITA import GestorePartita
