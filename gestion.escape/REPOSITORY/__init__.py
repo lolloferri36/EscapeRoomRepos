@@ -1,5 +1,0 @@
-from REPOSITORY.AMMINISTRATORE_REPOSITORY import AmministratoreRepository
-from REPOSITORY.CLIENTE_REPOSITORY import ClienteRepository
-from REPOSITORY.PRENOTAZIONE_REPOSITORY import PrenotazioneRepository
-from REPOSITORY.STANZA_REPOSITORY import StanzaRepository
-from REPOSITORY.PARTITA_REPOSITORY import PartitaRepository
