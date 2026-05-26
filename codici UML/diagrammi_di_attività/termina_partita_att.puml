@@ -1,0 +1,21 @@
+@startuml
+start
+
+:Termina partita;
+:Verifica tempo trascorso;
+if (tempo <= 90 min?) then (si)
+fork
+:Esito partita ("vittoria");
+fork again
+:Mostra risultato "partita vinta";   
+end fork
+else (no)
+fork
+:Esito partita ("sconfitta");
+fork again
+:Mostra risultato: "partita persa";
+end fork
+endif
+
+stop
+@enduml

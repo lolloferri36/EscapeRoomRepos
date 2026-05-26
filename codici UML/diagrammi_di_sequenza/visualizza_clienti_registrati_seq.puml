@@ -1,0 +1,17 @@
+@startuml
+
+actor Amministratore
+participant "<<Boundary>>\nInterfacciaClienti" as B
+participant "<<Controller>>\nGestoreClienti" as C
+
+Amministratore -> B : accede sezione cliente
+B -> C : elencaClienti()
+
+C -> C : restituisce lista clienti
+C --> C : lista clienti
+C -> B : mostraClienti()
+
+B --> Amministratore : visualizza clienti
+
+note right of C : Clienti si sottointende registrati
+@enduml        

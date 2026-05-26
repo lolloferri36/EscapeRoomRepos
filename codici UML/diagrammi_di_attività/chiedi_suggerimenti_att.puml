@@ -1,0 +1,12 @@
+@startuml 
+start
+:Chiedi suggerimento;
+
+if (suggerimenti richiesti <3 ?) then (si)
+:Mostra suggerimento;
+else (no)
+:Mostra errore: "limite di suggerimenti raggiunto";
+endif
+
+stop
+@enduml

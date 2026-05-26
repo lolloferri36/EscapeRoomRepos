@@ -1,0 +1,64 @@
+@startuml
+
+left to right direction
+
+actor "Utente" as U
+actor "Cliente" as C
+actor "Amministratore" as A
+
+rectangle "WebSite" {
+    usecase "Registrazione" as Reg
+    usecase "Consulta Catalogo" as CC
+    usecase "Prenota Stanza" as PS
+    usecase "Modifica Prenotazione" as MP
+    usecase "Disdetta" as Dis
+    
+    usecase "Visualizza Clienti Registrati" as VCR
+    usecase "Visualizza Prenotazioni" as VP
+    usecase "Aggiorna Catalogo Stanze" as ACS
+    usecase "AvviaPartita" as AVP
+    usecase "Termina Partita" as TP
+    usecase "Visualizza Storico Partite" as VSP
+    usecase "Chiedi Suggerimento" as CS
+    usecase "Abbandona Partita" as AP
+  
+    usecase "Accesso" as Accesso
+
+    U -- CC
+    U -- Accesso
+
+    C -- VSP
+    C -- CS
+    C -- AP
+    C -- Reg
+    C -- PS
+    C -- MP
+    C -- Dis
+    C -- TP
+    C -- AVP
+    
+    (TP)..>(AVP): <<include>>
+    
+    (PS) ..> (CC) : <<include>>
+
+    (Dis) ..> (PS) : <<include>>
+
+    (MP) ..> (PS) : <<include>>
+
+    (AP) ..> (AVP) : <<include>>
+
+    (CS) ..> (AVP) : <<include>>
+    
+
+    A -- VCR
+    A -- VP 
+    A -- ACS
+
+    
+    (PS) ..> (Accesso) : <<include>>
+    (Reg) ..> (Accesso) : <<extend>>
+    
+    (ACS) ..> (CC) : <<include>>
+   }
+
+@enduml

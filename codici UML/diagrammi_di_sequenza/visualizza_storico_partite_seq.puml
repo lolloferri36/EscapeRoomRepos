@@ -1,0 +1,15 @@
+@startuml
+actor "Cliente" as Cliente
+participant "InterfacciaPartita" as IP <<Boundary>>
+participant "GestorePartita" as C <<Controller>>
+participant "Partita" as P <<Entity>>
+
+
+Cliente -> IP : visualizzaStoricoPartite(idCliente)
+IP -> C : elencaStoricoPartite(idCliente)
+C -> P : trovaStoricoPerCliente(idCliente)
+P --> C : lista partite
+C --> IP
+IP --> Cliente : storico partite
+
+@enduml
